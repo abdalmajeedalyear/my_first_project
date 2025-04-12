@@ -1,0 +1,328 @@
+
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>دليل CSS Animations</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            line-height: 1.6;
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #f5f5f5;
+        }
+        
+        h1, h2 {
+            color: #2c3e50;
+            text-align: center;
+        }
+        
+        .example-container {
+            background: white;
+            border-radius: 8px;
+            padding: 20px;
+            margin-bottom: 30px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        
+        .example {
+            padding: 40px;
+            margin: 15px 0;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            text-align: center;
+            min-height: 200px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        
+        .code {
+            background: #f8f8f8;
+            padding: 10px;
+            border-radius: 5px;
+            font-family: monospace;
+            white-space: pre-wrap;
+            margin: 10px 0;
+            direction: ltr;
+            text-align: left;
+        }
+        
+        .animation-box {
+            width: 100px;
+            height: 100px;
+            background-color: #3498db;
+            margin: 10px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: white;
+            font-weight: bold;
+        }
+        
+        /* 1. Animation أساسية */
+        @keyframes basic-animation {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.5); }
+            100% { transform: scale(1); }
+        }
+        
+        .basic-animation {
+            animation: basic-animation 2s infinite;
+        }
+        
+        /* 2. تدوير مستمر */
+        @keyframes spin {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+        
+        .spin-animation {
+            animation: spin 3s linear infinite;
+            border-radius: 50%;
+            background: conic-gradient(#e74c3c, #f1c40f, #2ecc71, #3498db, #9b59b6, #e74c3c);
+        }
+        
+        /* 3. نطاط */
+        @keyframes bounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-50px); }
+        }
+        
+        .bounce-animation {
+            animation: bounce 1.5s ease infinite;
+            background-color: #e74c3c;
+        }
+        
+        /* 4. وميض */
+        @keyframes blink {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.3; }
+        }
+        
+        .blink-animation {
+            animation: blink 1s linear infinite;
+            background-color: #f1c40f;
+        }
+        
+        /* 5. انزلاق */
+        @keyframes slide {
+            from { transform: translateX(-100px); }
+            to { transform: translateX(100px); }
+        }
+        
+        .slide-animation {
+            animation: slide 2s ease-in-out infinite alternate;
+            background-color: #2ecc71;
+        }
+        
+        /* 6. تغيير ألوان */
+        @keyframes color-change {
+            0% { background-color: #3498db; }
+            25% { background-color: #9b59b6; }
+            50% { background-color: #e74c3c; }
+            75% { background-color: #f1c40f; }
+            100% { background-color: #2ecc71; }
+        }
+        
+        .color-animation {
+            animation: color-change 5s linear infinite;
+        }
+        
+        /* 7. تأثير النبض */
+        @keyframes pulse {
+            0% { transform: scale(1); box-shadow: 0 0 0 0 rgba(52, 152, 219, 0.7); }
+            70% { transform: scale(1.1); box-shadow: 0 0 0 15px rgba(52, 152, 219, 0); }
+            100% { transform: scale(1); box-shadow: 0 0 0 0 rgba(52, 152, 219, 0); }
+        }
+        
+        .pulse-animation {
+            animation: pulse 2s infinite;
+            border-radius: 50%;
+        }
+        
+        /* 8. اهتزاز */
+        @keyframes shake {
+            0%, 100% { transform: translateX(0); }
+            10%, 30%, 50%, 70%, 90% { transform: translateX(-10px); }
+            20%, 40%, 60%, 80% { transform: translateX(10px); }
+        }
+        
+        .shake-animation {
+            animation: shake 0.5s linear infinite;
+            background-color: #34495e;
+        }
+        
+        /* 9. تحميل */
+        @keyframes loading {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        
+        .loading-animation {
+            width: 50px;
+            height: 50px;
+            border: 5px solid #f3f3f3;
+            border-top: 5px solid #3498db;
+            border-radius: 50%;
+            animation: loading 1s linear infinite;
+        }
+        
+        /* 10. حركة معقدة */
+        @keyframes complex {
+            0% { transform: translate(0, 0) rotate(0deg); background-color: #3498db; }
+            25% { transform: translate(100px, 0) rotate(90deg); background-color: #e74c3c; }
+            50% { transform: translate(100px, 100px) rotate(180deg); background-color: #f1c40f; }
+            75% { transform: translate(0, 100px) rotate(270deg); background-color: #2ecc71; }
+            100% { transform: translate(0, 0) rotate(360deg); background-color: #3498db; }
+        }
+        
+        .complex-animation {
+            animation: complex 4s linear infinite;
+            position: relative;
+        }
+    </style>
+</head>
+<body>
+    <h1>دليل CSS Animations</h1>
+    <p style="text-align: center;">شاهد مختلف أنواع التحريك باستخدام CSS</p>
+    
+    <div class="example-container">
+        <h2>1. Animation أساسية (تكبير وتصغير)</h2>
+        <div class="example">
+            <div class="animation-box basic-animation">1</div>
+        </div>
+        <div class="code">
+@keyframes basic-animation {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.5); }
+    100% { transform: scale(1); }
+}
+
+.basic-animation {
+    animation: basic-animation 2s infinite;
+}
+        </div>
+    </div>
+    
+    <div class="example-container">
+        <h2>2. تدوير مستمر</h2>
+        <div class="example">
+            <div class="animation-box spin-animation">2</div>
+        </div>
+        <div class="code">
+@keyframes spin {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+}
+
+.spin-animation {
+    animation: spin 3s linear infinite;
+    border-radius: 50%;
+    background: conic-gradient(#e74c3c, #f1c40f, #2ecc71, #3498db, #9b59b6, #e74c3c);
+}
+        </div>
+    </div>
+    
+    <div class="example-container">
+        <h2>3. تأثير نطاط</h2>
+        <div class="example">
+            <div class="animation-box bounce-animation">3</div>
+        </div>
+        <div class="code">
+@keyframes bounce {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-50px); }
+}
+
+.bounce-animation {
+    animation: bounce 1.5s ease infinite;
+}
+        </div>
+    </div>
+    
+    <div class="example-container">
+        <h2>4. تأثير وميض</h2>
+        <div class="example">
+            <div class="animation-box blink-animation">4</div>
+        </div>
+        <div class="code">
+@keyframes blink {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.3; }
+}
+
+.blink-animation {
+    animation: blink 1s linear infinite;
+}
+        </div>
+    </div>
+    
+    <div class="example-container">
+        <h2>5. حركة انزلاق</h2>
+        <div class="example">
+            <div class="animation-box slide-animation">5</div>
+        </div>
+        <div class="code">
+@keyframes slide {
+    from { transform: translateX(-100px); }
+    to { transform: translateX(100px); }
+}
+
+.slide-animation {
+    animation: slide 2s ease-in-out infinite alternate;
+}
+        </div>
+    </div>
+    
+    <div class="example-container">
+        <h2>6. تغيير الألوان</h2>
+        <div class="example">
+            <div class="animation-box color-animation">6</div>
+        </div>
+        <div class="code">
+@keyframes color-change {
+    0% { background-color: #3498db; }
+    25% { background-color: #9b59b6; }
+    50% { background-color: #e74c3c; }
+    75% { background-color: #f1c40f; }
+    100% { background-color: #2ecc71; }
+}
+
+.color-animation {
+    animation: color-change 5s linear infinite;
+}
+        </div>
+    </div>
+    
+    <div class="example-container">
+        <h2>7. تأثير النبض</h2>
+        <div class="example">
+            <div class="animation-box pulse-animation">7</div>
+        </div>
+        <div class="code">
+@keyframes pulse {
+    0% { transform: scale(1); box-shadow: 0 0 0 0 rgba(52, 152, 219, 0.7); }
+    70% { transform: scale(1.1); box-shadow: 0 0 0 15px rgba(52, 152, 219, 0); }
+    100% { transform: scale(1); box-shadow: 0 0 0 0 rgba(52, 152, 219, 0); }
+}
+
+.pulse-animation {
+    animation: pulse 2s infinite;
+    border-radius: 50%;
+}
+        </div>
+    </div>
+    
+    <div class="example-container">
+        <h2>8. تأثير اهتزاز</h2>
+        <div class="example">
+            <div class="animation-box shake-animation">8</div>
+        </div>
+        <div class="code">
+@keyframes shake {
+    0%, 100% { transform: translateX(0); }
+    10%, 30%, 50%, 70%, 90% { transform: translateX
